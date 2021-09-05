@@ -138,7 +138,7 @@ function isPlayerTouchingZomb(mob) {
     player.x = Math.round(mob.x);
     player.y = Math.round(mob.y);
     for (let z of zombs) {
-        if (range(player.x - 10, player.x + 10).includes(Math.round(z.x)) && range(player.y - 10, player.y + 10).includes(Math.round(z.y))) {
+        if (range(player.x - 13, player.x + 13).includes(Math.round(z.x)) && range(player.y - 13, player.y + 13).includes(Math.round(z.y))) {
             h -= 1;
             if (h == 0) {   
                 dead = true;
