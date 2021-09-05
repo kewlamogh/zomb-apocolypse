@@ -74,6 +74,7 @@ function range(start, end) { //from dev.to
 
 function draw(){
     if (dead) {
+        renderPlayer("lightgreen");
         return;
     }
     clear();
@@ -97,8 +98,10 @@ function moveZombs() {
     fill(color("white"));
 }
 
-function renderPlayer() {
+function renderPlayer(color = "white") {
+    fill(color);
     rect(playerpos["x"], playerpos["y"], 10, 10);  
+    fill("white");
 }
 
 function moveBullets() {
@@ -132,8 +135,6 @@ function checkForBulletsIn(mob) {
 }
 
 function isPlayerTouchingZomb(mob) {
-    //TODO: Make player killbox more robust
-
     let player = mob;
     player.x = Math.round(mob.x);
     player.y = Math.round(mob.y);
@@ -142,7 +143,7 @@ function isPlayerTouchingZomb(mob) {
             h -= 1;
             if (h == 0) {   
                 dead = true;
-                background("red");
+                alert("You got infected.");
             }
         }
     }
