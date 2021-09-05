@@ -3,16 +3,15 @@ let bullets = [];
 let keyspressed = {};
 let zombs = [];
 let n = 0;
-let h = 3;
-let gun = {
+let h = 1;
+let reloadData = {
     "_inCurrentClip": 10,
     "_clip": 10,
     "_shouldReload": false
 };
+let dead = false;
 
-setInterval(() => {
-    spawnZomb()
-}, 3000);
+setInterval(spawnZomb, 3000);
 
 function spawnZomb() {
     n += 1;
@@ -73,12 +72,36 @@ function range(start, end) { //from dev.to
     return ans;
 }
 
-function draw(){ 
+function draw(){
+    if (dead) {
+        return;
+    }
     clear();
     move();                  
     isPlayerTouchingZomb(playerpos);
     background("green");
-    text(gun._inCurrentClip+"/"+gun._clip, 0, 300);
+    text(reloadData._inCurrentClip+"/"+reloadData._clip, 0, 300);
+    moveBullets();
+    moveZombs();
+    renderPlayer();
+}
+
+function moveZombs() {
+    fill(color("lightgreen"));
+    for (let zomb of zombs) {
+        zomb.x += (playerpos.x - zomb.x) / 15;
+        zomb.y += (playerpos.y - zomb.y) / 15;
+        rect(zomb.x, zomb.y, 10, 10);
+        checkForBulletsIn(zomb);
+    }
+    fill(color("white"));
+}
+
+function renderPlayer() {
+    rect(playerpos["x"], playerpos["y"], 10, 10);  
+}
+
+function moveBullets() {
     let it = -1;
     for (let bullet of bullets) {
         it += 1;
@@ -92,15 +115,6 @@ function draw(){
         }
         rect(bullet.x, bullet.y, 5, 5);
     }
-    fill(color("lightgreen"));
-    for (let zomb of zombs) {
-        zomb.x += (playerpos.x - zomb.x) / 15;
-        zomb.y += (playerpos.y - zomb.y) / 15;
-        rect(zomb.x, zomb.y, 10, 10);
-        checkForBulletsIn(zomb);
-    }
-    fill(color("white"));
-    rect(playerpos["x"], playerpos["y"], 10, 10);  
 }
 
 function checkForBulletsIn(mob) {
@@ -118,14 +132,17 @@ function checkForBulletsIn(mob) {
 }
 
 function isPlayerTouchingZomb(mob) {
+    //TODO: Make player killbox more robust
+
     let player = mob;
     player.x = Math.round(mob.x);
     player.y = Math.round(mob.y);
     for (let z of zombs) {
-        if (range(player.x - 5, player.x + 5).includes(Math.round(z.x)) && range(player.y - 5, player.y + 5).includes(Math.round(z.y))) {
+        if (range(player.x - 10, player.x + 10).includes(Math.round(z.x)) && range(player.y - 10, player.y + 10).includes(Math.round(z.y))) {
             h -= 1;
-            if (h == 0) {
-                alert("You Died.")
+            if (h == 0) {   
+                dead = true;
+                background("red");
             }
         }
     }
@@ -138,10 +155,10 @@ function deleteBullet(n) {
 }
 
 async function mousePressed() {
-    if (gun._inCurrentClip == 0) {
-        gun._shouldReload = true;
+    if (reloadData._inCurrentClip == 0) {
+        reloadData._shouldReload = true;
         await new Promise(resolve => setTimeout(resolve, 1000));
-        gun._inCurrentClip = gun._clip;
+        reloadData._inCurrentClip = reloadData._clip;
     }
     
     bullets.push({
@@ -152,5 +169,5 @@ async function mousePressed() {
         "hasHit": false
     });
 
-    gun._inCurrentClip -= 1;
+    reloadData._inCurrentClip -= 1;
 }
