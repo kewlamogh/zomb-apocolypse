@@ -3,6 +3,7 @@ let bullets = [];
 let keyspressed = {};
 let zombs = [];
 let n = 0;
+let h = 3;
 let gun = {
     "_inCurrentClip": 10,
     "_clip": 10,
@@ -35,12 +36,6 @@ async function move() {
         playerpos["y"] -= 1;
         playerpos["y"] -= 1;
         playerpos["y"] -= 1;
-    }
-    if ("r" in keyspressed && !gun._shouldReload) {
-        gun._shouldReload = true;
-        gun._inCurrentClip = gun._clip;
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        gun._shouldReload = false;
     }
     if ("s" in keyspressed) {
         playerpos["y"] += 1;
@@ -128,8 +123,10 @@ function isPlayerTouchingZomb(mob) {
     player.y = Math.round(mob.y);
     for (let z of zombs) {
         if (range(player.x - 5, player.x + 5).includes(Math.round(z.x)) && range(player.y - 5, player.y + 5).includes(Math.round(z.y))) {
-            alert("YOU DIED!");
-            window.location.href = "/main.html";
+            h -= 1;
+            if (h == 0) {
+                alert("You Died.")
+            }
         }
     }
     return false;
