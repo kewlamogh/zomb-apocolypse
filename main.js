@@ -24,7 +24,7 @@ function spawnZomb() {
 
 function setup(){
     createCanvas(window.innerWidth, window.innerHeight);
-    rectMode(CENTER);
+    rectMode(CENTER); 
 }
 
 document.onkeydown = (e) => {keyspressed[e.key] = true};
@@ -36,6 +36,9 @@ async function move() {
         playerpos["y"] -= 1;
         playerpos["y"] -= 1;
     }
+    if ("r" in keyspressed && reloadData._inCurrentClip != reloadData._clip) {
+        reload();
+    } 
     if ("s" in keyspressed) {
         playerpos["y"] += 1;
         playerpos["y"] += 1;
@@ -155,12 +158,16 @@ function deleteBullet(n) {
     bullets = bullets.filter((a) => a != undefined && a != null);
 }
 
+function reload() {
+    reloadData._shouldReload = true;
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    reloadData._inCurrentClip = reloadData._clip;
+}
+
 async function mousePressed() {
     if (reloadData._inCurrentClip == 0) {
-        reloadData._shouldReload = true;
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        reloadData._inCurrentClip = reloadData._clip;
-    }
+        reload();
+    } 
     
     bullets.push({
         "x": playerpos["x"],
