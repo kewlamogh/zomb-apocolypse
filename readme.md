@@ -11,4 +11,3 @@ You are their defender from the zombies before the Resistance flies their Helico
 - potatojs for the inspiration from Survive2D
 - me for the code
 - p5js for p5js
-- my dad for a bit of debugging
