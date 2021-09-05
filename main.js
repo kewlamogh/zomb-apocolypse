@@ -30,29 +30,27 @@ function setup(){
 document.onkeydown = (e) => {keyspressed[e.key] = true};
 document.onkeyup = (e) => {delete keyspressed[e.key]};
 
+function moveThreePixels(axis, change) {
+    playerpos[axis] += change;
+    playerpos[axis] += change;
+    playerpos[axis] += change;
+} 
+
 async function move() {
     if ("w" in keyspressed) {
-        playerpos["y"] -= 1;
-        playerpos["y"] -= 1;
-        playerpos["y"] -= 1;
+        moveThreePixels('y', -1)
     }
     if ("r" in keyspressed && reloadData._inCurrentClip != reloadData._clip) {
         reload();
     } 
     if ("s" in keyspressed) {
-        playerpos["y"] += 1;
-        playerpos["y"] += 1;
-        playerpos["y"] += 1;
+        moveThreePixels('y', 1);
     }
     if ("a" in keyspressed) {
-        playerpos["x"] -= 1;
-        playerpos["x"] -= 1;
-        playerpos["x"] -= 1;
+        moveThreePixels('x', -1);
     }
     if ("d" in keyspressed) {
-        playerpos["x"] += 1;
-        playerpos["x"] += 1;
-        playerpos["x"] += 1;
+        moveThreePixels('x', 1);
     }
 }
 
@@ -158,7 +156,7 @@ function deleteBullet(n) {
     bullets = bullets.filter((a) => a != undefined && a != null);
 }
 
-function reload() {
+async function reload() {
     reloadData._shouldReload = true;
     await new Promise(resolve => setTimeout(resolve, 1000));
     reloadData._inCurrentClip = reloadData._clip;
