@@ -11,3 +11,12 @@ You are their defender from the zombies before the Resistance flies their Helico
 - potatojs for the inspiration from Survive2D
 - me for the code
 - p5js for p5js
+
+## controls
+WASD to move. Click to shoot.
+
+## contributing
+If you have a fix for any bugs you see create a PR with the solution [here](https://github.com/kewlamogh/zomb-apocolypse).
+
+# VERY WISE ~~and totally not obvious~~ QUOTE
+> "RUN FOR YOUR LIFE!!!!!!!!!!!!" - a very wise person
