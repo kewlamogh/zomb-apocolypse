@@ -87,7 +87,7 @@ function draw() {
     renderObjects();
     moveBullets();
     moveZombs();
-    renderHammerOfLightWave();
+    renderForcefieldOfLightWave();
     renderPlayer();
     crosshair();
 }

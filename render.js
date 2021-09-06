@@ -16,7 +16,7 @@ function moveBullets() {
     }
 }
 
-function renderHammerOfLightWave() {
+function renderForcefieldOfLightWave() {
     if (renderWave) {
         circle(playerpos.x, playerpos.y, 50);
     }

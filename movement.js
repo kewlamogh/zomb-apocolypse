@@ -26,7 +26,7 @@ document.onkeydown = (e) => {keyspressed[e.key] = true};
 document.onkeyup = (e) => {delete keyspressed[e.key]};
 
 window.onkeypress = async e => {
-    if (e.key == "q" && hammerOfLight) {
+    if (e.key == "q" && forcefieldOfLight) {
         for (var zomb of zombs) {
             zomb.x -= (playerpos.x > zomb.x ? 1 : -1) * 16;
             zomb.y -= (playerpos.y > zomb.y ? 1 : -1) * 16;
