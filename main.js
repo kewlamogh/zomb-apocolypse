@@ -64,20 +64,6 @@ function moveThreePixels(axis, change) {
             revoke = true;
         }
     }
-
-    if (revoke) {
-        for (let i of zombs) {
-            i[axis] += change * 3;
-        }
-    
-        for (let i of bullets) {
-            i[axis] += change * 3;
-        }
-    
-        for (let i of objects) {
-            i[axis] += change * 3;
-        }
-    }
 } 
 
 async function move() {
@@ -126,12 +112,8 @@ function range(start, end) { //from dev.to
 }
 
 function upgradePlayer() {
-    switch (points) {
-        case 10:
-        case 20:
-        case 30:
-            h += 1;
-            break;
+    if (points % 10 == 0) {
+        h = points / 10;
     }
 }
 
@@ -162,41 +144,9 @@ function moveZombs() {
     fill(color("white"));
 }
 
-function renderPlayer(color = "oop") {
-    if (color != "oop") {
-        fill("lightgreen");
-        circle(playerpos["x"], playerpos["y"], 30);
-        return;
-    } 
-
-    let c;
-    switch (h) {
-        case 1:
-            c = "lightgray";
-            fill(c);
-            circle(playerpos["x"], playerpos["y"], 30);
-            break;
-        case 2:
-            c = "gray";
-            fill(c);
-            circle(playerpos["x"], playerpos["y"], 30);
-            break;
-        case 3:
-            c = "darkgray";
-            fill(c);
-            circle(playerpos["x"], playerpos["y"], 30);
-            break;
-        case 4:
-            c = "black";
-            fill(c);
-            circle(playerpos["x"], playerpos["y"], 30);
-            break;
-        default:
-            c = "black";
-            fill(c);
-            circle(playerpos["x"], playerpos["y"], 30);
-            break;
-    }
+function renderPlayer(color = "peachpuffa") {
+    fill(color);
+    circle(playerpos.x, playerpos.y, 30);
     fill("white");
 }
 
