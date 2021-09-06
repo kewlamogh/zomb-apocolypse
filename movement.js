@@ -24,3 +24,5 @@ async function move() {
 
 document.onkeydown = (e) => {keyspressed[e.key] = true};
 document.onkeyup = (e) => {delete keyspressed[e.key]};
+
+// change
