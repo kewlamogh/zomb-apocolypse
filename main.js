@@ -1,4 +1,4 @@
-let playerpos = {"x": 0, "y": 0};
+let playerpos = {"x": window.innerWidth / 2, "y": window.innerHeight / 2};
 let bullets = [];
 let keyspressed = {};
 let zombs = [];
@@ -9,6 +9,10 @@ let reloadData = {
     "_clip": 10,
     "_shouldReload": false
 };
+let objects = [
+    {x: 30, y: 30},
+    {x: 21, y: 100}
+];
 let dead = false;
 
 setInterval(spawnZomb, 3000);
@@ -22,6 +26,12 @@ function spawnZomb() {
     });
 }
 
+function renderObjects() {
+    for (var i of objects) {
+        rect(i.x, i.y, 20, 20); 
+    }
+}
+
 function setup(){
     createCanvas(window.innerWidth, window.innerHeight);
     rectMode(CENTER); 
@@ -31,9 +41,21 @@ document.onkeydown = (e) => {keyspressed[e.key] = true};
 document.onkeyup = (e) => {delete keyspressed[e.key]};
 
 function moveThreePixels(axis, change) {
+    /*playerpos[axis] += change;
     playerpos[axis] += change;
-    playerpos[axis] += change;
-    playerpos[axis] += change;
+    playerpos[axis] += change;*/
+
+    for (let i of zombs) {
+        i[axis] -= change * 3;
+    }
+
+    for (let i of bullets) {
+        i[axis] -= change * 3;
+    }
+
+    for (let i of objects) {
+        i[axis] -= change * 3;
+    }
 } 
 
 async function move() {
@@ -73,7 +95,7 @@ function range(start, end) { //from dev.to
     return ans;
 }
 
-function draw(){
+function draw() {
     if (dead) {
         renderPlayer("lightgreen");
         return;
@@ -82,6 +104,7 @@ function draw(){
     move();                  
     isPlayerTouchingZomb(playerpos);
     background("green");
+    renderObjects();
     text(reloadData._inCurrentClip+"/"+reloadData._clip, 0, 300);
     moveBullets();
     moveZombs();
@@ -93,7 +116,7 @@ function moveZombs() {
     for (let zomb of zombs) {
         zomb.x += (playerpos.x - zomb.x) / 15;
         zomb.y += (playerpos.y - zomb.y) / 15;
-        circle(zomb.x, zomb.y, 10);
+        circle(zomb.x, zomb.y, 30);
         checkForBulletsIn(zomb);
     }
     fill(color("white"));
@@ -101,7 +124,7 @@ function moveZombs() {
 
 function renderPlayer(color = "white") {
     fill(color);
-    circle(playerpos["x"], playerpos["y"], 10);  
+    circle(playerpos["x"], playerpos["y"], 30);  
 }
 
 function moveBullets() {
@@ -127,7 +150,7 @@ function checkForBulletsIn(mob) {
     zomb.x = Math.round(zomb.x);
     zomb.y = Math.round(zomb.y);
     for (let bullet of bullets) {
-        if (range(zomb.x - 5, zomb.x + 5).includes(Math.round(bullet.x)) && range(zomb.y - 5, zomb.y + 5).includes(Math.round(bullet.y))) {
+        if (range(zomb.x - 15, zomb.x + 15).includes(Math.round(bullet.x)) && range(zomb.y - 15, zomb.y + 15).includes(Math.round(bullet.y))) {
             bullet.hasHit = true;
             bullet.hit = zomb.id;
             return true;
@@ -141,7 +164,7 @@ function isPlayerTouchingZomb(mob) {
     player.x = Math.round(mob.x);
     player.y = Math.round(mob.y);
     for (let z of zombs) {
-        if (range(player.x - 13, player.x + 13).includes(Math.round(z.x)) && range(player.y - 13, player.y + 13).includes(Math.round(z.y))) {
+        if (range(player.x - 15, player.x + 15).includes(Math.round(z.x)) && range(player.y - 15, player.y + 15).includes(Math.round(z.y))) {
             h -= 1;
             if (h == 0) {
                 dead = true;
