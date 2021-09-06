@@ -142,9 +142,12 @@ function isPlayerTouchingZomb(mob) {
     for (let z of zombs) {
         if (range(player.x - 13, player.x + 13).includes(Math.round(z.x)) && range(player.y - 13, player.y + 13).includes(Math.round(z.y))) {
             h -= 1;
-            if (h == 0) {   
+            if (h == 0) {
                 dead = true;
                 alert("You got infected.");
+                for (let i = 0; i < bullets.length; i++) {
+                    deleteBullet(i);
+                }
             }
         }
     }
