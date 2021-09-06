@@ -47,6 +47,8 @@ function moveThreePixels(axis, change) {
     playerpos[axis] += change;
     playerpos[axis] += change;*/
 
+    let revoke = false;
+
     for (let i of zombs) {
         i[axis] -= change * 3;
     }
@@ -57,6 +59,23 @@ function moveThreePixels(axis, change) {
 
     for (let i of objects) {
         i[axis] -= change * 3;
+        if (range(Math.round(i[axis] + 15), Math.round(i[axis]) - 15).includes(Math.round(playerpos[axis]))) {
+            revoke = true;
+        }
+    }
+
+    if (revoke) {
+        for (let i of zombs) {
+            i[axis] += change * 3;
+        }
+    
+        for (let i of bullets) {
+            i[axis] += change * 3;
+        }
+    
+        for (let i of objects) {
+            i[axis] += change * 3;
+        }
     }
 } 
 
@@ -75,6 +94,12 @@ async function move() {
     }
     if ("d" in keyspressed) {
         moveThreePixels('x', 1);
+    }
+    if ('z' in keyspressed) {
+        objects.push({
+            "x": mouseX,
+            "y": mouseY
+        });
     }
 }
 
