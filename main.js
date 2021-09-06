@@ -2,7 +2,7 @@ let playerpos = {"x": window.innerWidth / 2, "y": window.innerHeight / 2};
 let bullets = [];
 let keyspressed = {};
 let zombs = [];
-let n = 0;
+let zombIdGenerator = 0;
 let h = 1;
 let reloadData = {
     "_inCurrentClip": 10,
@@ -16,17 +16,17 @@ let objects = [
     {x: 120, y: 120},
     {x: 30, y: 120}
 ];
-let points = 10;
+let points = 0;
 let dead = false;
 
 setInterval(spawnZomb, 3000);
 
 function spawnZomb() {
-    n += 1;
+    zombIdGenerator++;
     zombs.push({   
         "x": Math.round(Math.random() * window.innerWidth),
         "y": Math.round(Math.random() * window.innerHeight),
-        "id": n 
+        "id": zombIdGenerator
     });
 }
 
