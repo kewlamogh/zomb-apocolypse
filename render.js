@@ -16,6 +16,12 @@ function moveBullets() {
     }
 }
 
+function renderHammerOfLightWave() {
+    if (renderWave) {
+        circle(playerpos.x, playerpos.y, 50);
+    }
+}
+
 function renderObjects() {
     for (var i of objects) { 
         rect(i.x, i.y, 30, 30); 

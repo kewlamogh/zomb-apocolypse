@@ -25,11 +25,14 @@ async function move() {
 document.onkeydown = (e) => {keyspressed[e.key] = true};
 document.onkeyup = (e) => {delete keyspressed[e.key]};
 
-window.onkeypress = (e) => {
+window.onkeypress = async e => {
     if (e.key == "q" && hammerOfLight) {
         for (var zomb of zombs) {
             zomb.x -= zomb.x / 3;
             zomb.y -= zomb.y / 3;
         }
+        renderWave = true;
+        await new Promise(resolve => setTimeout(resolve, 30));
+        renderWave = false;
     }
 }

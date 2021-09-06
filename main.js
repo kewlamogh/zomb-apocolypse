@@ -9,6 +9,7 @@ let reloadData = {
     "_clip": 10,
     "_shouldReload": false
 };
+let renderWave = false;
 let objects = [
     {x: 30, y: 30},
     {x: 60, y: 60},
@@ -86,6 +87,7 @@ function draw() {
     renderObjects();
     moveBullets();
     moveZombs();
+    renderHammerOfLightWave();
     renderPlayer();
     crosshair();
 }
