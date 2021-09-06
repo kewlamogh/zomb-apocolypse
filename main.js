@@ -93,7 +93,7 @@ function moveZombs() {
     for (let zomb of zombs) {
         zomb.x += (playerpos.x - zomb.x) / 15;
         zomb.y += (playerpos.y - zomb.y) / 15;
-        rect(zomb.x, zomb.y, 10, 10);
+        circle(zomb.x, zomb.y, 10);
         checkForBulletsIn(zomb);
     }
     fill(color("white"));
@@ -101,8 +101,7 @@ function moveZombs() {
 
 function renderPlayer(color = "white") {
     fill(color);
-    rect(playerpos["x"], playerpos["y"], 10, 10);  
-    fill("white");
+    circle(playerpos["x"], playerpos["y"], 10);  
 }
 
 function moveBullets() {
@@ -117,7 +116,9 @@ function moveBullets() {
                killZomb(bullet.hit);
            }
         }
-        rect(bullet.x, bullet.y, 5, 5);
+        fill("black");
+        circle(bullet.x, bullet.y, 5);
+        fill("white");
     }
 }
 
