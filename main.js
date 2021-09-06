@@ -11,7 +11,9 @@ let reloadData = {
 };
 let objects = [
     {x: 30, y: 30},
-    {x: 21, y: 100}
+    {x: 21, y: 100},
+    {x: 500, y: 30},
+    {x: 10, y: 10}
 ];
 let dead = false;
 
@@ -131,8 +133,8 @@ function moveBullets() {
     let it = -1;
     for (let bullet of bullets) {
         it += 1;
-        bullet.x += (bullet.targetDest.x - bullet.x) / 30;
-        bullet.y += (bullet.targetDest.y - bullet.y) / 30;
+        bullet.x += (bullet.targetDest.x - bullet.x) / 150;
+        bullet.y += (bullet.targetDest.y - bullet.y) / 150;
         if (Math.round(bullet.x) == bullet.targetDest.x || bullet.hasHit) {
            deleteBullet(it);
            if (bullet.hasHit) {
