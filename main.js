@@ -44,10 +44,6 @@ document.onkeydown = (e) => {keyspressed[e.key] = true};
 document.onkeyup = (e) => {delete keyspressed[e.key]};
 
 function moveThreePixels(axis, change) {
-    /*playerpos[axis] += change;
-    playerpos[axis] += change;
-    playerpos[axis] += change;*/
-
     let revoke = false;
 
     for (let i of zombs) {
