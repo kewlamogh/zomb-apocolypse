@@ -28,11 +28,11 @@ document.onkeyup = (e) => {delete keyspressed[e.key]};
 window.onkeypress = async e => {
     if (e.key == "q" && hammerOfLight) {
         for (var zomb of zombs) {
-            zomb.x -= zomb.x / 3;
-            zomb.y -= zomb.y / 3;
+            zomb.x -= (playerpos.x > zomb.x ? 1 : -1) * 16;
+            zomb.y -= (playerpos.y > zomb.y ? 1 : -1) * 16;
         }
         renderWave = true;
         await new Promise(resolve => setTimeout(resolve, 30));
         renderWave = false;
     }
-}
+} 
