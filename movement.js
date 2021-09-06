@@ -28,8 +28,8 @@ document.onkeyup = (e) => {delete keyspressed[e.key]};
 window.onkeypress = (e) => {
     if (e.key == "q" && hammerOfLight) {
         for (var zomb of zombs) {
-            zomb.x -= zomb.x / 30;
-            zomb.y -= zomb.y / 30;
+            zomb.x -= zomb.x / 3;
+            zomb.y -= zomb.y / 3;
         }
     }
 }

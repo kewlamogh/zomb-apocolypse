@@ -16,7 +16,7 @@ let objects = [
     {x: 120, y: 120},
     {x: 30, y: 120}
 ];
-let points = 0;
+let points = 99;
 let dead = false;
 
 setInterval(spawnZomb, 3000);
@@ -39,15 +39,21 @@ function moveThreePixels(axis, change) {
     let revoke = false;
 
     for (let i of zombs) {
-        i[axis] -= change * 3;
+        i[axis] -= change;
+        i[axis] -= change;
+        i[axis] -= change;
     }
 
     for (let i of bullets) {
-        i[axis] -= change * 3;
+        i[axis] -= change;
+        i[axis] -= change;
+        i[axis] -= change;
     }
 
     for (let i of objects) {
-        i[axis] -= change * 3;
+        i[axis] -= change;
+        i[axis] -= change;
+        i[axis] -= change;
         if (range(Math.round(i[axis] + 15), Math.round(i[axis]) - 15).includes(Math.round(playerpos[axis]))) {
             revoke = true;
         }

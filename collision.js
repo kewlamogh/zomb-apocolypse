@@ -26,8 +26,8 @@ function isPlayerTouchingZomb(mob) {
     for (let z of zombs) {
         if (range(player.x - 15, player.x + 15).includes(Math.round(z.x)) && range(player.y - 15, player.y + 15).includes(Math.round(z.y))) {
             h -= 1; 
-            playerpos.x -= z.x / 10;
-            playerpos.y -= z.y / 10;
+            moveThreePixels("x", -(z.x - playerpos.x));
+            moveThreePixels("y", -(z.y - playerpos.y));
             if (h == 0) {
                 dead = true;
                 alert("You got infected.");
