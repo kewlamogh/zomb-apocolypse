@@ -15,6 +15,7 @@ let objects = [
     {x: 500, y: 30},
     {x: 10, y: 10}
 ];
+let points = 10;
 let dead = false;
 
 setInterval(spawnZomb, 3000);
@@ -111,6 +112,8 @@ function killZomb(zombID) {
             delete zombs[iterator];
         }
     }
+    points++;
+    upgradePlayer();
     zombs = zombs.filter((a) => a != undefined && a != null);
 }
 
@@ -120,6 +123,16 @@ function range(start, end) { //from dev.to
         ans.push(i);
     }
     return ans;
+}
+
+function upgradePlayer() {
+    switch (points) {
+        case 10:
+        case 20:
+        case 30:
+            h += 1;
+            break;
+    }
 }
 
 function draw() {
@@ -149,9 +162,42 @@ function moveZombs() {
     fill(color("white"));
 }
 
-function renderPlayer(color = "white") {
-    fill(color);
-    circle(playerpos["x"], playerpos["y"], 30);  
+function renderPlayer(color = "oop") {
+    if (color != "oop") {
+        fill("lightgreen");
+        circle(playerpos["x"], playerpos["y"], 30);
+        return;
+    } 
+
+    let c;
+    switch (h) {
+        case 1:
+            c = "lightgray";
+            fill(c);
+            circle(playerpos["x"], playerpos["y"], 30);
+            break;
+        case 2:
+            c = "gray";
+            fill(c);
+            circle(playerpos["x"], playerpos["y"], 30);
+            break;
+        case 3:
+            c = "darkgray";
+            fill(c);
+            circle(playerpos["x"], playerpos["y"], 30);
+            break;
+        case 4:
+            c = "black";
+            fill(c);
+            circle(playerpos["x"], playerpos["y"], 30);
+            break;
+        default:
+            c = "black";
+            fill(c);
+            circle(playerpos["x"], playerpos["y"], 30);
+            break;
+    }
+    fill("white");
 }
 
 function moveBullets() {
