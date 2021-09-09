@@ -8,7 +8,7 @@ The few survivors created a Resistance movement to overthrow the Darkness, but t
 You are their defender from the zombies before the Resistance flies their Helicopters toward the Darkness' base.
 
 ## credit
-- [potatojs](https://replit.com/@potatojs) on [ReplIt](https://replit.com) ([potojs](https://github.com/potojs) on GitHub) for the inspiration from Survive2D
+- [potatojs](https://replit.com/@potatojs) on [ReplIt](https://replit.com) ([potojs](https://github.com/potojs) on GitHub) for the inspiration from Survive2D. His game is written in [TypeScript](https://typescriptlang.org), though. Mine is in [p5.js](https://p5js.org).
 - me for the code
 - p5js for p5js
 
