@@ -9,6 +9,10 @@ let reloadData = {
     "_clip": 10,
     "_shouldReload": false
 };
+let inGamePosition = {
+    "x": 0,
+    "y": 0
+};
 let renderWave = false;
 let objects = [
     {x: 30, y: 30},
@@ -46,6 +50,8 @@ function addObject(x, y) {
 
 function moveThreePixels(axis, change) {
     let revoke = false;
+
+    inGamePosition[axis] += change;
 
     let p = {
         "x": Math.random() * 10000,
@@ -141,11 +147,16 @@ function draw() {
     clear();                  
     isPlayerTouchingZomb(playerpos);
     background("lightgreen");
-    text(reloadData._inCurrentClip+"/"+reloadData._clip, 0, 300);
+    fill("black");
+    text("Ammo: "+reloadData._inCurrentClip+"/"+reloadData._clip, 0, 300);
     move();
+    fill("brown");
     renderObjects();
     moveBullets();
     moveZombs();
+    fill("black");
+    textSize(30);
+    text("You are "+inGamePosition.x+" pixels away horizontally and "+-inGamePosition.y +" pixels vertically from spawn.", 200, 900);
     renderForcefieldOfLightWave();
     renderPlayer();
     crosshair();
