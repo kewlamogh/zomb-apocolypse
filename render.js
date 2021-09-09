@@ -7,7 +7,7 @@ function moveBullets() {
         if (Math.round(bullet.x) == bullet.targetDest.x || bullet.hasHit) {
            deleteBullet(it);
            if (bullet.hasHit) {
-               killZomb(bullet.hit);
+               decreaseZombieHealth(bullet.hit);
            }
         }
         fill("black");

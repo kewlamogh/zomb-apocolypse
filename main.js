@@ -27,7 +27,8 @@ function spawnZomb() {
     zombs.push({   
         "x": Math.round(Math.random() * window.innerWidth),
         "y": Math.round(Math.random() * window.innerHeight),
-        "id": zombIdGenerator
+        "id": zombIdGenerator,
+        "health": 3
     });
 }
 
@@ -36,8 +37,25 @@ function setup(){
     rectMode(CENTER); 
 }
 
+function addObject(x, y) {
+    objects.push({
+        "x": x,
+        "y": y
+    });
+}
+
 function moveThreePixels(axis, change) {
     let revoke = false;
+
+    let p = {
+        "x": Math.random() * 10000,
+        "y": Math.random() * 10000
+    } 
+
+    if (range(0, window.innerWidth).includes(Math.round(p.x)) || range(0, window.innerHeight).includes(Math.round(p.y))) {} else {
+        addObject(p.x, p.y);
+    } 
+
     for (let i of zombs) {
         i[axis] -= change;
         i[axis] -= change;
@@ -94,6 +112,25 @@ function killZomb(zombID) {
     points++;
     upgradePlayer();
     zombs = zombs.filter((a) => a != undefined && a != null);
+}
+
+let sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+async function decreaseZombieHealth(zombID) {
+    for (let zomb of zombs) {
+        if (zomb.id == zombID) {
+            zomb.health -= 1;
+            if (zomb.health == 0) {
+                killZomb(zombID);
+            } else {
+                for (let i = 0; i <= 10; i++) {
+                    zomb.x -= (playerpos.x - zomb.x) / 10;
+                    zomb.y -= (playerpos.y - zomb.y) / 10;
+                    await sleep(10);
+                }
+            }
+        }
+    }
 }
 
 function draw() {
