@@ -18,5 +18,5 @@ WASD to move. Click to shoot.
 ## contributing
 If you have a fix for any bugs you see create a PR with the solution [here](https://github.com/kewlamogh/zomb-apocolypse).
 
-# VERY WISE ~~and totally not obvious~~ QUOTE
+# very wise ~~and totally not obvious~~ quote
 > "RUN FOR YOUR LIFE!!!!!!!!!!!!" - a very wise person
