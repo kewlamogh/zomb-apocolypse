@@ -156,7 +156,7 @@ function draw() {
     moveZombs();
     fill("black");
     textSize(30);
-    text("You are "+inGamePosition.x+" pixels away horizontally and "+-inGamePosition.y +" pixels vertically from spawn.", 200, 900);
+    text("X: "+inGamePosition.x+" Y: "+-inGamePosition.y, 200, 900);
     renderForcefieldOfLightWave();
     renderPlayer();
     crosshair();
@@ -176,6 +176,7 @@ async function reload() {
 async function mousePressed() {
     if (reloadData._inCurrentClip == 0) {
         reload();
+        return;
     } 
     
     bullets.push({
