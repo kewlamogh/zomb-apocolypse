@@ -1,10 +1,15 @@
-function range(start, end) { //from dev.to
+function range(start, end, caller = "o") { //from dev.to
     var ans = [];
     for (let i = start; i <= end; i++) {
         ans.push(i);
     }
+    if (caller == "block" && ans.length > 0) {
+        return true;
+    } else if (caller == "block") {
+        return false;
+    }
     return ans;
-}
+} 
 function checkForBulletsIn(mob) {
     let zomb = mob;
     zomb.x = Math.round(zomb.x);
