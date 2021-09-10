@@ -30,7 +30,7 @@ window.onkeypress = async e => {
             zomb.y -= (playerpos.y > zomb.y ? 1 : -1) * 16;
         }
         renderWave = true;
-        await new Promise(resolve => setTimeout(resolve, 30));
+        await sleep(30);
         renderWave = false;
     }
 } 
