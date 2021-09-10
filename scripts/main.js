@@ -66,7 +66,16 @@ function moveThreePixels(axis, change) {
 
     if (range(0, window.innerWidth).includes(Math.round(p.x)) || range(0, window.innerHeight).includes(Math.round(p.y))) {} else {
         addObject(p.x, p.y);
+    }
+    
+    p = {
+        "x": Math.random() * 10000,
+        "y": Math.random() * 10000
     } 
+
+    if (range(0, window.innerWidth).includes(Math.round(p.x)) || range(0, window.innerHeight).includes(Math.round(p.y))) {} else {
+        grassPieces.push({"x": p.x, "y": p.y});
+    }
 
     for (let i of zombs) {
         i[axis] -= change;
@@ -75,6 +84,12 @@ function moveThreePixels(axis, change) {
     }
 
     for (let i of bullets) {
+        i[axis] -= change;
+        i[axis] -= change;
+        i[axis] -= change;
+    }
+
+    for (let i of grassPieces) {
         i[axis] -= change;
         i[axis] -= change;
         i[axis] -= change;
@@ -93,6 +108,12 @@ function moveThreePixels(axis, change) {
     }
 
     if (revoke) {
+        for (let i of grassPieces) {
+            i[axis] -= change;
+            i[axis] -= change;
+            i[axis] -= change;
+        }
+
         for (let i of zombs) {
             i[axis] += change;
             i[axis] += change;
@@ -160,6 +181,7 @@ function draw() {
     move();
     fill("brown");
     renderObjects();
+    drawgrassPieces();
     moveBullets();
     moveZombs();
     fill("black");

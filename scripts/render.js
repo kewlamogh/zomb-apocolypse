@@ -16,6 +16,18 @@ function moveBullets() {
     }
 }
 
+function drawgrassPieces() {
+    fill("green");
+    for (let tm of grassPieces) {
+        circle(tm.x, tm.y, 10);
+        for (let zomb of zombs) {
+            if (Math.floor(zomb.x) == tm.x && Math.floor(zomb.y) == tm.y) {
+                decreaseZombieHealth(zomb.id);
+            }
+        }
+    }
+}
+
 function renderForcefieldOfLightWave() {
     if (renderWave) {
         circle(playerpos.x, playerpos.y, 50);

@@ -1,20 +1,21 @@
+let grassPieces = [];
 async function move() {
-    if ("w" in keyspressed) {
+    if ("w" in keyspressed || "ArrowUp" in keyspressed) {
         moveThreePixels('y', -1)
     }
     if ("r" in keyspressed && reloadData._inCurrentClip != reloadData._clip) {
         reload();
     } 
-    if ("s" in keyspressed) {
+    if ("s" in keyspressed || "ArrowDown" in keyspressed) {
         moveThreePixels('y', 1);
     }
-    if ("a" in keyspressed) {
+    if ("a" in keyspressed || "ArrowLeft" in keyspressed) {
         moveThreePixels('x', -1);
     }
-    if ("d" in keyspressed) {
+    if ("d" in keyspressed || "ArrowRight" in keyspressed) {
         moveThreePixels('x', 1);
     }
-    if ('z' in keyspressed) {
+    if ('Shift' in keyspressed || "z" in keyspressed) {
         addObject(mouseX, mouseY)
         await sleep(10);
     }
