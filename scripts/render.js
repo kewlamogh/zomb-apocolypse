@@ -2,8 +2,8 @@ function moveBullets() {
     let it = -1;
     for (let bullet of bullets) {
         it += 1;
-        bullet.x += (bullet.targetDest.x - bullet.x) / 150;
-        bullet.y += (bullet.targetDest.y - bullet.y) / 150;
+        bullet.x += (bullet.targetDest.x - bullet.x) / 10;
+        bullet.y += (bullet.targetDest.y - bullet.y) / 10;
         if (Math.round(bullet.x) == bullet.targetDest.x || bullet.hasHit) {
            deleteBullet(it);
            if (bullet.hasHit) {
@@ -20,11 +20,6 @@ function drawgrassPieces() {
     fill("green");
     for (let tm of grassPieces) {
         circle(tm.x, tm.y, 10);
-        for (let zomb of zombs) {
-            if (Math.floor(zomb.x) == tm.x && Math.floor(zomb.y) == tm.y) {
-                decreaseZombieHealth(zomb.id);
-            }
-        }
     }
 }
 
