@@ -53,6 +53,12 @@ function moveThreePixels(axis, change) {
 
     inGamePosition[axis] += change;
 
+    if (playerpos[axis] != change * 3) {
+        playerpos[axis] += change;
+    } else {
+        playerpos[axis] -= change;
+    }
+
     let p = {
         "x": Math.random() * 10000,
         "y": Math.random() * 10000
@@ -104,6 +110,8 @@ function moveThreePixels(axis, change) {
             i[axis] += change;
             i[axis] += change;
         }
+        
+        playerpos[axis] -= change;
     }
 } 
 
