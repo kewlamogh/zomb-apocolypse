@@ -18,11 +18,11 @@ async function move() {
     if ('Shift' in keyspressed || "z" in keyspressed) {
         addObject(mouseX, mouseY)
         await sleep(10);
-    }
-}
-
-document.onkeydown = (e) => {keyspressed[e.key] = true};
-document.onkeyup = (e) => {delete keyspressed[e.key]};
+    }//                                                                     ______      _______    _      _         __           __                _____
+}//                                                        /\    |\    /|  / /   \ \  / /   \_\   | |    | |       /  |         |  \    |\    /|  |_____|
+//                                                        //\\   | \  / |  | |   | |  | |    ___  | |____| |      /   |_________|   \   | \  / |  |_____|
+document.onkeydown = (e) => {keyspressed[e.key] = true}; //==\\  |  \/  |  | |   | |  | |    | |  |  ____  |      \   |_________|   /   |  \/  |  |_____
+document.onkeyup = (e) => {delete keyspressed[e.key]};  //    \\ |_|  |_|  \_\===/_/  \ \===/ /   |_|    |_|       \__|         |__/    |_|  |_|  |_____|
 
 window.onkeypress = async e => {
     if (e.key == "q") {

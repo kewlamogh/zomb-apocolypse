@@ -21,7 +21,6 @@ let objects = [
     {x: 120, y: 120},
     {x: 30, y: 120}
 ];
-let points = 0;
 let dead = false;
 
 setInterval(spawnZomb, 3000);
