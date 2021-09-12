@@ -1,3 +1,8 @@
+/*
+Upgrades
+- contains upgrade function
+Copyright 2021 DaCool1 and Contributors
+*/
 let forcefieldOfLight = false;
 let points = 0;
 async function upgradePlayer() {

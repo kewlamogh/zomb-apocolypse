@@ -1,3 +1,7 @@
+/*
+Collisions and certain effects (such as player getting knocked back).
+Copyright 2021 DaCool1 and Contributors
+*/
 function range(start, end, caller = "o") { //from dev.to
     var ans = [];
     for (let i = start; i <= end; i++) {

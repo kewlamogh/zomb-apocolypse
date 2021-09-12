@@ -1,3 +1,11 @@
+/*
+Main JS file
+- contains draw function
+- in charge of bullet firing
+- contains moving function
+- contains all vars except points (points in upgrades.js)
+Copyright 2021 DaCool1 and Contributors
+*/
 let playerpos = {"x": window.innerWidth / 2, "y": window.innerHeight / 2};
 let bullets = [];
 let keyspressed = {};

@@ -1,3 +1,11 @@
+/*
+Movement and Keymapping
+- This has the grassPieces var
+- KeyPress register
+- forcefield of light
+Copyright 2021 DaCool1 and Contributors
+*/
+
 let grassPieces = [];
 async function move() {
     if ("w" in keyspressed || "ArrowUp" in keyspressed) {
