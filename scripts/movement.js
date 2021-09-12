@@ -3,7 +3,7 @@ Movement and Keymapping
 - This has the grassPieces var
 - KeyPress register
 - forcefield of light
-Copyright 2021 DaCool1 and Contributors
+Copyright 2021 AmoghTheCool and Contributors
 */
 
 let grassPieces = [];

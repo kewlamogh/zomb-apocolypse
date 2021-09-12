@@ -1,7 +1,7 @@
 /*
 Upgrades
 - contains upgrade function
-Copyright 2021 DaCool1 and Contributors
+Copyright 2021 AmoghTheCool and Contributors
 */
 let forcefieldOfLight = false;
 let points = 0;
