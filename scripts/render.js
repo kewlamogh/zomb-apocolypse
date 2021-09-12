@@ -2,7 +2,7 @@
 Rendering
 - all rendering functions here
 - along with the scripts to move bullets and zombies
-Copyright 2021 AmoghTheCool and Contributors
+Copyright 2021 DaCool1 and Contributors
 */
 function moveBullets() {
     let it = -1;
