@@ -17,6 +17,7 @@ let reloadData = {
     "_clip": 10,
     "_shouldReload": false
 };
+let tripped = 0;
 let inGamePosition = {
     "x": 0,
     "y": 0
@@ -57,7 +58,21 @@ function addObject(x, y) {
 
 function moveThreePixels(axis, change) {
     let revoke = false;
-
+    
+    if (tripped > 0) {
+        tripped -= 1;
+        
+        return;
+    }
+    
+    if ((Math.random() * 100) == 1) {
+        // player "trips"
+        text("Oops you tripped.", 200, 750);
+        
+        tripped = 500;
+        return;
+    }
+    
     inGamePosition[axis] += change;
 
     if (playerpos[axis] != change * 3) {
