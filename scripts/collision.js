@@ -14,6 +14,7 @@ function range(start, end, caller = "o") { //from dev.to
     }
     return ans;
 } 
+
 function checkForBulletsIn(mob) {
     let zomb = mob;
     zomb.x = Math.round(zomb.x);
@@ -39,7 +40,7 @@ function isPlayerTouchingZomb(mob) {
             moveThreePixels("y", -(z.y - playerpos.y));
             if (h == 0) {
                 dead = true;
-                alert("You got infected.");
+				window.location.href = "gameover.html"
                 for (let i = 0; i < bullets.length; i++) {
                     deleteBullet(i);
                 }
