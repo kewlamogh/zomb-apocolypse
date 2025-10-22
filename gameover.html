@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html lang = "en">
-  	<head>
-    	<meta charset="utf-8">
-    	<meta name="viewport" content="width=device-width">
-    	<title>repl.it</title>
-    	<link href="style.css" rel="stylesheet" type="text/css" />
-  	</head>
-	  
+<html lang="en">
 
-	<body>
-		<h1 id = "gameOverTitle">You were slain.</h1>
-		
-		<div id = "kills"></div>
-		<button onclick = 'window.location.href = "game.html"'>Play Again</button>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Gameover</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.min.css">
+</head>
 
-		<script>
-			document.getElementById('kills').innerText = "Kills: " + (sessionStorage.getItem('kills') || "none, please actually play the game").toString()
-		</script>
-	</body>
-</html>	
+
+<body>
+	<h1 id="gameOverTitle">You were slain.</h1>
+
+	<div id="kills"></div>
+	<button onclick='window.location.href = "game.html"'>Play Again</button>
+
+	<script>
+		document.getElementById('kills').innerText = "Kills: " + (sessionStorage.getItem('kills') || "none, please actually play the game").toString()
+	</script>
+</body>
+
+</html>

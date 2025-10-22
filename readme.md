@@ -11,6 +11,7 @@ You are their defender from the zombies before the Resistance flies their Helico
 - [potatojs](https://replit.com/@potatojs) on [ReplIt](https://replit.com) ([potojs](https://github.com/potojs) on GitHub) for the inspiration from Survive2D. His game is written in [TypeScript](https://typescriptlang.org), though. Mine is in [p5.js](https://p5js.org).
 - me for the code
 - p5js for p5js
+- WaterCSS for CSS (I've lost the original stylesheet, and CSS isn't my forte anyway)
 
 ## controls
 WASD to move. Click to shoot.
